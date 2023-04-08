@@ -52,8 +52,8 @@ def load_model(
     # model = model_huggingface
     model = HubertModel.from_pretrained(model_hub)
 
-    if torch.cuda.is_available():
-        model.cuda()
+    # if torch.cuda.is_available():
+    #     model.cuda()
 
     # sample rate and embedding sizes are required model attributes for the HEAR API
     model.sample_rate = 16000

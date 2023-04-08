@@ -20,9 +20,6 @@ def load_model(model_file_path: str = "") -> torch.nn.Module:
 
     model = hubert_wav2vec2_avg()
 
-    if torch.cuda.is_available():
-        model.cuda()
-
     model.sample_rate = 16000
     model.embedding_size = 1024
     model.scene_embedding_size = model.embedding_size

@@ -54,19 +54,11 @@ class TorchCrepeModel(torch.nn.Module):
 
     def __init__(self):
         super().__init__()
-
-        # This is gross.
-        if torch.cuda.is_available():
-            torchcrepe.load.model(device="cuda", capacity="full")
-        else:
-            torchcrepe.load.model(device="cpu", capacity="full")
+        torchcrepe.load.model(device="cpu", capacity="full")
 
     def forward(self, x: Tensor, hop_size_samples: int):
         # Or do x.device?
-        if torch.cuda.is_available():
-            device = "cuda"
-        else:
-            device = "cpu"
+        device = "cpu"
         if x.ndim == 1:
             x = x.view(1, x.shape[0])
 
